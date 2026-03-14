@@ -13,19 +13,19 @@
   
 ## Что тестируется
 
-| Метод | Эндпоинт | Что делает | Тест-класс |
-|---|---|---|---|
-| GET | /v1/disk | Информация о диске | DiskInfoTest |
-| PUT | /v1/disk/resources | Создание папки | FolderTest |
-| GET | /v1/disk/resources | Метаинформация о ресурсе | FolderTest |
-| DELETE | /v1/disk/resources | Удаление ресурса | FolderTest |
-| POST | /v1/disk/resources/copy | Копирование | CopyMoveTest |
-| POST | /v1/disk/resources/move | Перемещение | CopyMoveTest |
-| PUT | /v1/disk/resources/publish | Публикация | PublishTest |
-| PUT | /v1/disk/resources/unpublish | Снятие с публикации | PublishTest |
-| GET | /v1/disk/resources/upload | Ссылка для загрузки | FileUploadTest |
-| POST | /v1/disk/resources/upload | Загрузка по URL | FileUploadTest |
-| GET | /v1/disk/resources/download | Ссылка на скачивание | FileUploadTest |
+| Метод | Эндпоинт |
+|---|---|
+| GET | /v1/disk | 
+| PUT | /v1/disk/resources
+| GET | /v1/disk/resources 
+| DELETE | /v1/disk/resources
+| POST | /v1/disk/resources/copy 
+| POST | /v1/disk/resources/move 
+| PUT | /v1/disk/resources/publish 
+| PUT | /v1/disk/resources/unpublish
+| GET | /v1/disk/resources/upload 
+| POST | /v1/disk/resources/upload 
+| GET | /v1/disk/resources/download
 
 Тесты включают позитивные сценарии и негативные.
 
