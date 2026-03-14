@@ -3,6 +3,10 @@ package DisksTests;
 
 import DisksTests.model.Link;
 import DisksTests.model.Resource;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +17,8 @@ import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Яндекс.Диск REST API")
+@Feature("Загрузка и скачивание файлов")
 @DisplayName("Загрузка и скачивание файлов")
 public class FileUploadTest extends BaseTest {
 
@@ -32,6 +38,7 @@ public class FileUploadTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("GET /resources/upload - Получить ссылку для загрузки - 200")
     void shouldGetUploadLink() throws Exception {
         Link link = RestAssured.given()
@@ -49,6 +56,7 @@ public class FileUploadTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Полный цикл: загрузка файла -> проверка -> скачивание")
     void shouldUploadAndDownloadFile() throws Exception {
         Link uploadLink = RestAssured.given()
@@ -96,6 +104,7 @@ public class FileUploadTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("POST /resources/upload - Загрузка по внешнему URL - 202")
     void shouldUploadByExternalUrl() throws Exception {
         String externalUrl = "https://raw.githubusercontent.com/prixhd/TestTasks/refs/heads/main/README.md";

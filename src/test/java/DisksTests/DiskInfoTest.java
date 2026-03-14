@@ -1,6 +1,10 @@
 package DisksTests;
 
 import DisksTests.model.DiskInfo;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,10 +13,13 @@ import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Яндекс.Диск REST API")
+@Feature("Информация о Диске")
 @DisplayName("GET /v1/disk - Информация о Диске")
 public class DiskInfoTest extends BaseTest {
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("Получение информации о диске - 200")
     void shouldReturnDiskInfo() {
         DiskInfo diskInfo = RestAssured.given()
@@ -31,6 +38,7 @@ public class DiskInfoTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("Запрос с невалидным токеном - 401")
     void shouldReturn401WithBadToken() throws Exception {
         RestAssured.given()

@@ -3,6 +3,10 @@ package DisksTests;
 import DisksTests.model.ErrorResponse;
 import DisksTests.model.Link;
 import DisksTests.model.Resource;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +17,8 @@ import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Яндекс.Диск REST API")
+@Feature("PUT/GET/DELETE с папками")
 @DisplayName("Операции с папками (put / get / delete)")
 public class FolderTest extends BaseTest {
 
@@ -29,6 +35,7 @@ public class FolderTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("PUT - Создание папки - 201")
     void shouldCreateFolder() throws Exception {
         Link link = RestAssured.given()
@@ -45,6 +52,7 @@ public class FolderTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("PUT - Повторное создание папки - 409")
     void shouldReturn409WhenFolderExists() throws Exception {
         createFolder(folderName);
@@ -59,6 +67,7 @@ public class FolderTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("GET - Информация о папке - 200")
     void shouldGetFolderInfo() throws Exception {
         createFolder(folderName);
@@ -78,6 +87,7 @@ public class FolderTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("GET - Несуществующая папка - 404")
     void shouldReturn404ForNonExistentFolder() throws Exception {
         String fakeName = randomName("fake-folder");
@@ -96,6 +106,7 @@ public class FolderTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     @DisplayName("DELETE - Удаление папки - 204")
     void shouldDeleteFolder() throws Exception {
         createFolder(folderName);
@@ -119,6 +130,7 @@ public class FolderTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("DELETE - Удаление несуществующей папки - 404")
     void shouldReturn404WhenDeletingNonExistent() throws Exception {
         String fakeName = randomName("fake-folder-delete");

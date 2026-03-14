@@ -1,6 +1,10 @@
 package DisksTests;
 
 import DisksTests.model.Link;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.AfterEach;
@@ -12,6 +16,8 @@ import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Epic("Яндекс.Диск REST API")
+@Feature("Копирование и перемещение")
 @DisplayName("POST - Копирование и перемещение")
 public class CopyMoveTest extends BaseTest {
 
@@ -32,6 +38,7 @@ public class CopyMoveTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("POST /resources/copy - Копирование папки - 201")
     void shouldCopyFolder() throws Exception {
         Response response = RestAssured.given()
@@ -63,6 +70,7 @@ public class CopyMoveTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("POST /resources/copy - Копирование несуществующего - 404")
     void shouldReturn404WhenCopyingNonExistent() throws Exception {
         RestAssured.given()
@@ -76,6 +84,7 @@ public class CopyMoveTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("POST /resources/move - Перемещение папки - 201")
     void shouldMoveFolder() throws Exception {
         Response response = RestAssured.given()
@@ -107,6 +116,7 @@ public class CopyMoveTest extends BaseTest {
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
     @DisplayName("POST /resources/move - Перемещение несуществующего - 404")
     void shouldReturn404WhenMovingNonExistent() throws Exception {
         RestAssured.given()

@@ -1,6 +1,7 @@
 package DisksTests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,12 +22,15 @@ public class BaseTest {
     static void setUpBase() {
         String token = loadToken();
 
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+
         spec = RestAssured.given()
                 .baseUri("https://cloud-api.yandex.net")
                 .basePath("/v1/disk")
                 .header("Authorization", "OAuth " + token)
                 .header("Content-type", "application/json")
-                .header("Accept", "application/json");
+                .header("Accept", "application/json")
+                .filter(new AllureRestAssured());
     }
 
     private static String loadToken() {
