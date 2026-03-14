@@ -9,7 +9,8 @@
 - REST Assured
 - Jackson
 - Maven
-
+- Allure reports
+  
 ## Что тестируется
 
 | Метод | Эндпоинт | Что делает | Тест-класс |
